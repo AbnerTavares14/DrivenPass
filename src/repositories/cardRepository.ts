@@ -18,7 +18,11 @@ async function getCardById(id: number, userId: number) {
 
 async function getCards(id: number) {
     return prisma.cards.findMany({
-        where: { id }
+        where: {
+            userId: {
+                equals: id
+            }
+        }
     });
 }
 

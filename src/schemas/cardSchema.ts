@@ -9,8 +9,7 @@ const cardSchema = Joi.object<Cards>({
     expirationDate: Joi.string().required(),
     isVirtual: Joi.boolean().required(),
     type: Joi.string().required(),
-    title: Joi.string().required(),
-    userId: Joi.number().required()
+    title: Joi.string().required()
 });
 
 export default cardSchema;
