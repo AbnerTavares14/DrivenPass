@@ -36,6 +36,8 @@ model Credentials {
   password String
   userId   Int
   User     User   @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
 }
 
 model Notes {
@@ -44,6 +46,8 @@ model Notes {
   anotation String
   userId    Int
   User      User   @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
 }
 
 model Cards {
@@ -58,6 +62,8 @@ model Cards {
   title          String  @unique
   userId         Int
   User           User    @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
 }
 
 model Wifi {

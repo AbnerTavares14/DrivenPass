@@ -29,11 +29,12 @@ async function getCredential(id: number, userId: number) {
 
 async function getCredentials(id: number) {
     const credentials = await credentialRepository.getAllCredentialsOfUser(id);
+    console.log(credentials)
+    const cryptr = new Cryptr("secretPassword");
     if (credentials) {
         const dataOfCredentials = credentials.map((credential) => {
-            const cryptr = new Cryptr("secretPassword");
-            const decryptedPassword = cryptr.decrypt(credential.password);
-            const data: Credentials = { id: credential.id, url: credential.url, title: credential.url, username: credential.username, password: decryptedPassword, userId: credential.userId };
+            let decryptedPassword = cryptr.decrypt(credential.password);
+            let data: Credentials = { id: credential.id, url: credential.url, title: credential.title, username: credential.username, password: decryptedPassword, userId: credential.userId };
             return data;
         });
         return dataOfCredentials;
