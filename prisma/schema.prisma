@@ -25,7 +25,7 @@ model Sessions {
   id     Int    @id @default(autoincrement())
   token  String @unique
   userId Int
-  User   User   @relation(fields: [userId], references: [id])
+  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Credentials {
@@ -35,7 +35,7 @@ model Credentials {
   username String
   password String
   userId   Int
-  User     User   @relation(fields: [userId], references: [id])
+  User     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([title, userId])
 }
@@ -45,7 +45,7 @@ model Notes {
   title     String
   anotation String
   userId    Int
-  User      User   @relation(fields: [userId], references: [id])
+  User      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([title, userId])
 }
@@ -61,7 +61,7 @@ model Cards {
   type           String
   title          String  @unique
   userId         Int
-  User           User    @relation(fields: [userId], references: [id])
+  User           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([title, userId])
 }
@@ -72,5 +72,5 @@ model Wifi {
   password String
   title    String
   userId   Int
-  User     User   @relation(fields: [userId], references: [id])
+  User     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
